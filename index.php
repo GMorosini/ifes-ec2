@@ -397,7 +397,7 @@ $estatisticas = contarTarefasPorStatus($tarefas);
 
         <footer class="footer">
             <p>&copy; <?php echo date('Y'); ?> Sistema de Tarefas PHP | Desenvolvido para avaliação acadêmica | 
-            <a href="https://github.com" target="_blank">Código no GitHub</a></p>
+            <a href="https://github.com/GMorosini/ifes-ec2/" target="_blank">Código no GitHub</a></p>
         </footer>
     </div>
 
@@ -458,10 +458,15 @@ $estatisticas = contarTarefasPorStatus($tarefas);
                         currentFilter = newFilter;
                     }
                     
+                    console.log('Filtro atual:', currentFilter);
+
                     taskCards.forEach(taskCard => {
                         const statusElement = taskCard.querySelector('.task-status');
-                        const taskStatus = statusElement.textContent.toLowerCase();
+                        // Normaliza o texto do status para comparação
+                        const taskStatus = statusElement.textContent.toLowerCase().trim();
                         
+                        console.log('Tarefa ID:', taskCard.querySelector('.task-id').textContent, 'Status:', taskStatus, 'Comparando com:', currentFilter);
+
                         if (currentFilter === 'all' || taskStatus === currentFilter) {
                             taskCard.style.display = 'block';
                             taskCard.style.opacity = '1';
